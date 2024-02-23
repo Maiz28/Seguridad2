@@ -1,7 +1,10 @@
 package com.sda.persistencia.entity;
 
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,8 +18,12 @@ public class carreras {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id; 
 	private String nombre; 
-	private String competencia; 
-	private int tipo_carrera; 
+	private String competencias;
+	
+	@Enumerated
+	private TipoCarrea tipoCarrera; 
+	
+	private Date fechaRegistro;
 	
 	public static enum TipoCarrea{
 		ESCOLARIZADA, SEMIESCOLARIZADA 
@@ -38,19 +45,28 @@ public class carreras {
 		this.nombre = nombre;
 	}
 
-	public String getCompetencia() {
-		return competencia;
+	public String getCompetencias() {
+		return competencias;
 	}
 
-	public void setCompetencia(String competencia) {
-		this.competencia = competencia;
+	public void setCompetencias(String competencia) {
+		this.competencias = competencia;
 	}
 
-	public int getTipo_carrera() {
-		return tipo_carrera;
+	public TipoCarrea getTipoCarrera() {
+		return tipoCarrera;
 	}
 
-	public void setTipo_carrera(int tipo_carrera) {
-		this.tipo_carrera = tipo_carrera;
+	public void setTipoCarrera(TipoCarrea tipoCarrera) {
+		this.tipoCarrera = tipoCarrera;
 	}
+
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+	
 }
